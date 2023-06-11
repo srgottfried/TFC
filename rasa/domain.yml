@@ -1,0 +1,234 @@
+version: '3.1'
+forms:
+  pizza_form:
+    required_slots:
+    - pizza_type
+    - pizza_size
+  surveillance_form:
+    required_slots:
+    - title
+    - description
+    - area
+    - type
+    - sector
+entities:
+- date
+- sector
+- area
+- type
+- url
+- title
+- description
+- user
+- user_name
+- pizza_size
+- pizza_type
+- modificable_slot
+slots:
+  modificable_slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: modificable_slot
+  title:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: surveillance_form
+        requested_slot: title
+  description:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: surveillance_form
+        requested_slot: description
+  area:
+    type: categorical
+    values:
+      - SI
+      - CA
+      - COM
+      - SEC
+      - EHEALTH
+      - MM
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: surveillance_form
+        requested_slot: area
+  date:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: url
+
+  type:
+    type: categorical
+    values:
+      - VIGILANCIA TECNOLÓGICA
+      - VIGILANCIA DEL ENTORNO
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: surveillance_form
+        requested_slot: type
+  sector:
+    type: categorical
+    values:
+      - TELECOMMUNICATION
+      - AIR AND SPACE
+      - HEALTH AND WELLBEING
+      - INDUSTRY
+      - OTHER
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: surveillance_form
+        requested_slot: sector
+  user:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_user_identifier
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_user_identifier
+  url:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: url
+  pizza_size:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pizza_size
+  pizza_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pizza_type
+actions:
+- action_check_form
+- action_surveillance_modify_or_confirm_form
+- action_surveillance
+- action_surveillance_modify
+- validate_surveillance_form
+- action_surveillance_submit_form
+- action_user_identifier
+- utter_explain_why_size
+- action_pizza_submit
+- validate_pizza_form
+- utter_chitchat
+- utter_your_welcome
+- utter_faq
+- action_what_can_you_do
+- utter_ask_surveillance_form_area
+intents:
+- thank_you_intent
+- arithmetic_out_of_scope
+- ask_why_size
+- bot_challenge
+- chitchat
+- deny
+- faq
+- goodbye
+- greet
+- modify_surveillance_form
+- mood_great
+- mood_unhappy
+- nlu_fallback
+- pizza_size
+- pizza_type
+- request_fill_surveillance_slots
+- request_pizza
+- request_surveillance
+- submit_surveillance_form
+- what_can_you_do
+responses:
+  utter_nlu_fallback:
+  - text: Lo siento, no entiendo la pregunta. ¿Podrías reformularla por favor?
+  - text: No entiendo la estructura de la pregunta. ¿Podrías reformularla por favor?
+  - text: Creo que no entiendo la pregunta. ¿Puedes repetirla con otras palabras?
+  utter_arithmetic_out_of_scope:
+  - text: Lo siento, no puedo realizar cálculos aritméticos, pero puedo sugerirte que lances Python en tu terminal.
+  utter_url_fail:
+  - text: Lo siento, no puedo analizar esa URL.
+  utter_faq/ask_what_is_GRD:
+  - text: Gradiant es un centro tecnológico sin ánimo de lucro que actúa como canal para llevar el conocimiento producido en la Universidad a las empresas. Gradiant se encuentra en Vigo, Estrada do Vilar, 56-58, 36214 Vigo, Pontevedra. Puedes consultar más información sobre la ubicación en https://goo.gl/maps/dFPeiYdM1mCxQDvf6
+  utter_faq/ask_where_is_GRD:
+  - text: Gradiant se encuentra en Vigo, Estrada do Vilar, 56-58, 36214 Vigo, Pontevedra. Puedes consultar más información sobre la ubicación en https://goo.gl/maps/dFPeiYdM1mCxQDvf6
+  utter_chitchat/ask_name:
+  - text: Creo que no tengo nombre.
+  utter_chitchat/ask_age:
+  - text: Es una pregunta complicada.
+  utter_greet:
+  - text: Hola {user_name}. ¿Qué deseas?
+  utter_happy:
+  - text: Me alegro.
+  utter_sad:
+  - text: Que pena.
+  utter_your_welcome:
+  - text: De nada.
+  utter_goodbye:
+  - text: Hasta otra.
+  utter_chitchat/ask_who:
+  - text: Soy un bot.
+  utter_explain_why_size:
+  - text: Necesito saber el tamaño de la pizza para poder elegir la cantidad adecuada de ingredientes.
+  utter_ask_pizza_form_pizza_size:
+  - text: ¿De qué tamaño quieres la pizza?
+  utter_ask_pizza_form_pizza_type:
+  - text: ¿Qué tipo de pizza quieres?
+  utter_ask_surveillance_form_title:
+  - text: Introduce el título
+  utter_ask_surveillance_form_description:
+  - text: Introduce la descripción
+  utter_ask_surveillance_form_area:
+  - text: Introduce el área
+    buttons:
+      - title: "SI"
+        payload: "SI"
+      - title: "CA"
+        payload: "CA"
+      - title: "COM"
+        payload: "COM"
+      - title: "SEC"
+        payload: "SEC"
+      - title: "EHEALTH"
+        payload: "EHEALTH"
+      - title: "MM"
+        payload: "MM"
+  utter_ask_surveillance_form_type:
+  - text: Introduce el tipo
+    buttons:
+      - title: "VIGILANCIA TECNOLÓGICA"
+        payload: "VIGILANCIA TECNOLÓGICA"
+      - title: "VIGILANCIA DEL ENTORNO"
+        payload: "VIGILANCIA DEL ENTORNO"
+  utter_ask_surveillance_form_sector:
+  - text: Introduce el sector
+    buttons:
+      - title: "TELECO"
+        payload: "TELECOMMUNICATION"
+      - title: "AIR&SPACE"
+        payload: "AIR AND SPACE"
+      - title: "HEALTH"
+        payload: "HEALTH AND WELLBEING"
+      - title: "INDUSTRY"
+        payload: "INDUSTRY"
+      - title: "OTHER"
+        payload: "OTHER"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

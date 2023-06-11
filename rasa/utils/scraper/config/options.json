@@ -1,0 +1,28 @@
+{
+    "metadata": [
+        {
+            "name": "description",
+            "label": "meta",
+            "attrs": [
+                {
+                    "name": "description"
+                },
+                {
+                    "property": "og:description"
+                }
+            ],
+            "class_": [
+                "desc"
+            ]
+        },
+        {
+            "name": "area"
+        },
+        {
+            "name": "type"
+        },
+        {
+            "name": "sector"
+        }
+    ]
+}

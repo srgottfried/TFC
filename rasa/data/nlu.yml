@@ -1,0 +1,252 @@
+version: "3.1"
+nlu:
+
+- intent: thank_you_intent
+  examples: |
+    - gracias
+    - Gracias
+    - Muchas gracias
+    - agradecido
+    - muy agradecido
+
+- intent: modify_surveillance_form
+  examples: |
+    - Quiero modificar el campo [title](modificable_slot)
+    - Quiero modificar el campo [description](modificable_slot)
+    - Quiero modificar el campo [area](modificable_slot)
+    - Quiero modificar el campo [type](modificable_slot)
+    - Quiero modificar el campo [sector](modificable_slot)
+- intent: submit_surveillance_form
+  examples: |
+    - No quiero modificar ningún campo
+    - No hay que modificar ningún campo
+    - No quiero modificar ningun campo
+    - no quiero modificar ningún campo
+    - no quiero modificar ningun campo
+- intent: request_fill_surveillance_slots
+  examples: |
+    - Completar vigilancia tecnológica
+    - completar vigilancia tecnologica
+    - completar vigilancia tecnológica
+    - Completar vigilancia
+    - completar vigilancia
+- intent: what_can_you_do
+  examples: |
+    - ¿Que puedes hacer?
+    - ¿Qué puedes hacer?
+    - que puedes hacer
+    - que puedes hacer?
+    - que haces?
+    - para que sirves?
+    - en qué me puedes ayudar?
+    - en que cosas me puedes ayudar
+    - que puedes hacer por mi?
+    - ¿Qué puedes hacer por mi?
+- intent: arithmetic_out_of_scope
+  examples: |
+    - ¿Cuánto es 2 + 4?
+    - 3+1
+    - 2-1
+    - 8*7
+    - 9/6
+    - Cuál es la integral de
+    - Deriva la función
+    - Suma los resultados
+    - Cual es el logaritmo de
+    - Resta los cuadrados
+
+- intent: request_surveillance
+  examples: |
+    - [http://www.google.es](url)
+    - [https://arxiv.org/abs/2305.04757v1](url)
+    - [https://www.ibm.com/blog/capgemini-and-ibm-ecosystem-strengthen-partnership-for-drone-as-a-service/](url)
+    - [https://github.com/imartinez/privateGPT](url)
+    - [https://blog.langchain.dev/plan-and-execute-agents/](url)
+    - [https://shaankhosla.substack.com/p/flashattention-the-secret-behind](url)
+    - [https://www.kdnuggets.com/2023/05/chatbot-arena-llm-benchmark-platform.html](url)
+    - [https://www.anthropic.com/index/100k-context-windows](url)
+    - [https://ai.google/discover/palm2](url)
+    - [https://www.eventbrite.es/e/entradas-presentacion-tendencias-agroalimentarias-2023-y-economia-azul-galicia-478136819097](url)
+    - [https://rocketchat.gradiant.org/](url)
+    - [https://sateliot.space/en/](url)
+    - [https://www.elmundo.es/economia/empresas/2023/05/18/6465081dfc6c839b238b45ee.html](url)
+    - [https://www.farodevigo.es/](url)
+    - [https://news.google.com/home?hl=es&gl=ES&ceid=ES:es](url)
+    - [https://github.com/imartinez/privateGPT](url)
+- intent: pizza_type
+  examples: |
+    - una [napolitana](pizza_type)
+    - [fungi](pizza_type)
+    - una [cuatro quesos](pizza_type)
+    - una [cuatro estaciones](pizza_type)
+    - una [carbonara](pizza_type)
+    - una [fungi](pizza_type)
+    - Una [napolitana](pizza_type)
+    - una [napolitana](pizza_type) estaría bien
+- intent: pizza_size
+  examples: |
+    - una [mediana](pizza_size)
+    - [familiar](pizza_size)
+    - de tamaño [pequeña](pizza_size)
+    - [grande](pizza_size)
+    - una [grande](pizza_size)
+    - una [enana](pizza_size)
+    - una [enorme](pizza_size)
+    - [pequeña](pizza_size)
+    - una [mediana](pizza_size) estará bien
+    - pues que sea [pequeña](pizza_size) entonces
+    - pues una [mediana](pizza_size)
+    - [mediana](pizza_size)
+    - pues que sea [mediana](pizza_size)
+- intent: request_pizza
+  examples: |
+    - Quiero pedir una pizza
+    - Quiero una pizza
+    - Una pizza
+    - Pizza
+    - Dame una pizza
+    - Me apetece una pizza
+    - Quería una pizza
+    - Me gustaría tomar una pizza [napolitana](pizza_type)
+    - una pizza
+    - quier una pizza [napolitana](pizza_type)
+    - quería una pizza [fungi](pizza_type)
+    - me gustaría tomar una pizza [napolitana](pizza_type) [grande](pizza_size)
+    - quiero una pizza
+    - Me gustaría tomar una [napolitana](pizza_type)
+    - quiero encargar una pizza
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hola
+    - hola que tal
+    - buenos días
+    - buenas tardes
+    - moin
+    - hola amigo
+    - vamos
+    - hola colega
+    - buen día
+    - buenas noches
+- intent: goodbye
+  examples: |
+    - chao
+    - adiós
+    - nos vemos
+    - buenas noches
+    - hasta luego
+    - hasta pronto
+    - que tengas un buen día
+    - nos vemos por ahí
+    - hasta la próxima
+    - bye bye
+    - bye
+- intent: affirm
+  examples: |
+    - sí
+    - s
+    - claro
+    - por supuesto
+    - suena bien
+    - correcto
+- intent: deny
+  examples: |
+    - no
+    - n
+    - nunca
+    - no lo creo
+    - no me gusta eso
+    - de ninguna manera
+    - no realmente
+- intent: mood_great
+  examples: |
+    - perfecto
+    - genial
+    - increíble
+    - me siento como un rey
+    - maravilloso
+    - me siento muy bien
+    - estoy genial
+    - estoy increíble
+    - voy a salvar el mundo
+    - muy emocionado
+    - extremadamente bien
+    - tan perfecto
+    - tan bien
+    - tan genial
+    - bien
+- intent: mood_unhappy
+  examples: |
+    - mi día fue horrible
+    - estoy triste
+    - no me siento muy bien
+    - estoy decepcionado
+    - muy triste
+    - estoy tan triste
+    - triste
+    - infeliz
+    - no está bien
+    - no muy bien
+    - extremadamente triste
+    - tan triste
+    - mal
+- intent: chitchat/ask_who
+  examples: |
+    - ¿qué eres?
+    - ¿quién eres?
+    - ¿eres un bot?
+    - ¿eres un humano?
+    - ¿estoy hablando con un bot?
+    - ¿estoy hablando con un humano?
+    - eres un bot?
+- intent: faq/ask_what_is_GRD
+  examples: |
+    - ¿qué es gradiant?
+    - qué es gradiant?
+    - que es gradiant
+    - gradiant?
+    - gradiant
+    - me gustaría saber qué es gradiant
+    - no se que es gradiant
+    - de que va esta empresa?
+    - para que sirve gradiant?
+- intent: faq/ask_where_is_GRD
+  examples: |
+    - ¿dónde está gradiant?
+    - dónde está gradiant?
+    - donde está gradiant
+    - donde queda gradiant?
+    - me gustaría saber dónde está gradiant
+    - donde es gradiant?
+    - donde es gradiant
+    - por donde está gradiant
+    - no se donde está gradiant
+- intent: chitchat/ask_name
+  examples: |
+    - ¿cómo te llamas?
+    - como te llamas?
+    - como te llamas
+    - cuál es tu nombre?
+    - tienes nombre
+    - dime tu nombre
+    - nombre?
+- intent: chitchat/ask_age
+  examples: |
+    - ¿cuántos años tienes?
+    - cuantos años tienes?
+    - cuantos años tienes
+    - cuál es tu edad?
+    - tienes edad
+    - dime tu edad
+    - edad?
+
+- lookup: gradiant
+  examples: |
+    - gradiant
+    - GRD
+    - grd
+    - Gradiant
+    - GRADIANT
+    - gradient
+    - gradiente

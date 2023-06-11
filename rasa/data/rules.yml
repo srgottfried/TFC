@@ -1,0 +1,106 @@
+version: "3.1"
+
+rules:
+
+- rule: Answers for thanks-expresions
+  steps:
+    - intent: thank_you_intent
+    - action: utter_your_welcome
+
+- rule: Explain what can the bot do for the user
+  steps:
+  - intent: what_can_you_do
+  - action: action_what_can_you_do
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_nlu_fallback
+
+- rule: Arithmetic request out of scope
+  steps:
+    - intent: arithmetic_out_of_scope
+    - action: utter_arithmetic_out_of_scope
+
+- rule: Respond to FAQs
+  steps:
+    - intent: faq
+    - action: utter_faq
+
+
+- rule: Respond to chitchat
+  steps:
+    - intent: chitchat
+    - action: utter_chitchat
+    
+- rule: User greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Activate pizza_form
+  steps:
+    - intent: request_pizza
+    - action: action_check_form
+    - action: pizza_form
+    - active_loop: pizza_form
+
+- rule: Submit pizza_form
+  condition:
+    - active_loop: pizza_form
+  steps:
+    - action: pizza_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: action_pizza_submit
+  
+- rule: Interruption in Pizza Form
+  condition:
+  - active_loop: pizza_form
+  steps:
+  - intent: ask_why_size
+  - action: utter_explain_why_size
+  - action: pizza_form
+  - active_loop: pizza_form  
+
+
+- rule: Activate surveillance
+  steps:
+    - intent: request_surveillance
+    - action: action_check_form
+    - action: action_surveillance
+
+- rule: Submit surveillance form
+  steps:
+    - intent: submit_surveillance_form
+    - action: action_surveillance_submit_form
+
+- rule: Modify surveillance form
+  steps:
+    - intent: modify_surveillance_form
+    - action: action_surveillance_modify
+
+- rule: Activate surveillance form
+  steps:
+    - intent: request_fill_surveillance_slots
+    - action: action_check_form
+    - action: surveillance_form
+    - active_loop: surveillance_form
+
+- rule: Confirm surveillance form
+  condition:
+    - active_loop: surveillance_form
+  steps:
+    - action: surveillance_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: action_surveillance_modify_or_confirm_form
+

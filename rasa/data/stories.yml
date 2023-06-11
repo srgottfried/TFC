@@ -1,0 +1,35 @@
+version: "3.1"
+
+stories:
+
+- story: pizza_story_1
+  steps:
+  - intent: request_pizza
+  - action: action_check_form
+  - action: pizza_form
+  - active_loop: pizza_form
+  - slot_was_set:
+    - requested_slot: pizza_type
+  - intent: request_pizza
+    entities:
+    - pizza_type: napolitana
+  - slot_was_set:
+    - pizza_type: napolitana
+  - action: pizza_form
+  - slot_was_set:
+    - pizza_type: napolitana
+  - slot_was_set:
+    - requested_slot: pizza_size
+  - intent: mood_unhappy
+    entities:
+    - pizza_size: mediana
+  - slot_was_set:
+    - pizza_size: mediana
+  - action: pizza_form
+  - slot_was_set:
+    - pizza_size: mediana
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_pizza_submit
+
