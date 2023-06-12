@@ -1,11 +1,7 @@
-# RASA BOT - PROOF OF CONCEPT
+# RASA BOT - PUBLIC PROOF OF CONCEPT
 
 ## Overview
-Proof of concept of an alternative developed in RASA for Vigilabot, a bot to perform technological surveillance tasks.
-
-
-## Confluence
-You can find more information at [RASA BOT in Confluence](https://intranet.gradiant.org/confluence/pages/viewpage.action?pageId=149848537).
+Public proof of concept of a bot to perform technological surveillance and automation tasks.
 
 ## Requirements
 - Requires docker version >= 24.0.2
@@ -16,19 +12,19 @@ You can find more information at [RASA BOT in Confluence](https://intranet.gradi
 
 ## Installation
 
-```bash
-git clone https://github.com/Gradiant/SI-PRACTICAS-grd-rasa-assistant.git
+```
+git clone https://github.com/srgottfried/TFC.git
 ```
 
 ## Getting Started
 
 1. Deploy the application by running:
-    ```bash
+    ```
     make deploy
     ```
 
 2. If it is the **first time** you are deploying the application on your machine, restore the internal configurations by running:
-    ```bash
+    ```
     make init
     ```
     If you have already deployed the application before and have a `data/db` directory, you can skip this step.
@@ -80,6 +76,6 @@ http://localhost:8000/
 ## Ending Up
 
 Shut down the application and clean up deploy resources:
-```bash
+```
 make down
 ```
